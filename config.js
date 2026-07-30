@@ -1,0 +1,1 @@
+window.CLUB_SYSTEM_CONFIG={apiUrl:"請填入GAS Web App網址",schoolName:"大灣高中國中部",schoolYear:"115學年度"};
