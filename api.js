@@ -1,1 +1,23 @@
-async function api(action,payload={}){const u=CLUB_SYSTEM_CONFIG.apiUrl;if(!u||u.includes("請填入"))throw new Error("尚未設定GAS網址");const b=new URLSearchParams({action,payload:JSON.stringify(payload)});const r=await fetch(u,{method:"POST",body:b});const d=await r.json();if(!d.ok)throw new Error(d.message||"系統錯誤");return d}function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[c]))}
+/**
+ * 大灣高中國中部社團管理系統
+ * API 設定
+ */
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycbyuxweI-rTTRWztfnBkSNfX4iy8saap6tij5XmSuNf39yBlNvQnuw5ePd2nW6eZbL90gw/exec";
+
+/**
+ * 學生登入
+ */
+async function studentLogin(studentNo){
+
+    const url =
+        API_URL +
+        "?action=login&studentNo=" +
+        encodeURIComponent(studentNo);
+
+    const response = await fetch(url);
+
+    return await response.json();
+
+}
